@@ -1,12 +1,12 @@
 {
-  "name": "react-native-storybook-loader",
-  "version": "2.0.1",
-  "repository": "https://github.com/elderfo/react-native-storybook-loader.git",
-  "bugs": "https://github.com/elderfo/react-native-storybook-loader/issues",
+  "name": "react-storybook-excluder",
+  "version": "2.1.0",
+  "repository": "https://gitlab.com/NoahGray/react-storybook-excluder.git",
+  "bugs": "https://gitlab.com/NoahGray/react-storybook-excluder/issues",
   "author": "Chris Gestred <cgetsfred@gmail.com>",
   "license": "MIT",
   "bin": {
-    "rnstl": "./out/rnstl-cli.js"
+    "rnstx": "./out/rnstl-cli.js"
   },
   "files": [
     "out/**/*"

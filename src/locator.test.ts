@@ -22,6 +22,7 @@ const windowsGlob = [
 const linuxGlob = [
   '/home/user/nix-rules/src/index.ts',
   '/home/user/nix-rules/src/source.ts',
+  '/home/user/nix-rules/src/node_modules/@expo/exploding-yarn',
 ];
 
 function setupMocks() {}
@@ -69,5 +70,28 @@ describe('generateLoaderDefinition', () => {
 
     expect(actual.storyFiles).toContain('./src/index');
     expect(actual.storyFiles).toContain('./src/source');
+  });
+
+  test('just fuck off to node_modules', async () => {
+    glob.sync = jest.fn().mockReturnValueOnce(linuxGlob);
+
+    const config: Configuration = {
+      rootDirectory: '/home/user/nix-rules',
+      outputFile: faker.system.fileName(),
+      pattern: '**/*.ts',
+      searchDir: ['.'],
+    };
+
+    const actual = await generateLoaderDefinition(config);
+
+    expect(actual.outputFile).toEqual(
+      path.resolve(config.rootDirectory, config.outputFile)
+    );
+
+    expect(actual.storyFiles).toHaveLength(2);
+
+    expect(actual.storyFiles).toContain('./src/index');
+    expect(actual.storyFiles).toContain('./src/source');
+    expect(actual.storyFiles).not.toContain('./src/node_modules');
   });
 });

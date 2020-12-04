@@ -8,7 +8,9 @@ const formatter = (
   frms: (file: string) => string,
   separator: string
 ) => {
-  const formatted = files.map(f => frms(f));
+  const formatted = files
+    .map(f => frms(f))
+    .filter(f => !/\/node_modules\//g.exec(f));
   return formatted.join(separator);
 };
 

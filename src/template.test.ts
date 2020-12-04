@@ -13,6 +13,7 @@ describe('generateTemplate', () => {
         '../../parent/file3',
         './sub/file4',
         './sub/sub/file5',
+        './node_modules/sega_saturn_emulator/bios.bin',
       ],
     };
 

@@ -35,6 +35,7 @@ export const generateLoaderDefinition = async ({
     storyFiles: uniqueFiles
       .map(f => getRelativePath(f, outputFileDir))
       .map(f => stripExtension(f))
-      .map(f => formatPath(f)),
+      .map(f => formatPath(f))
+      .filter(f => !/\/node_modules\//g.exec(f)),
   };
 };
